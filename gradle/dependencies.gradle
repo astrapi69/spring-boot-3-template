@@ -3,10 +3,26 @@ dependencies {
     annotationProcessor libs.bundles.annotation.processor
     compileOnly libs.bundles.compile.only
 
+    implementation(libs.bundles.spring.boot.dependencies) {
+        exclude(group = "org.hibernate", module = "hibernate-core")
+    }
+    implementation(libs.hibernate.core)
+    implementation libs.bundles.spring.boot.extension.dependencies
+    implementation libs.bundles.flyway
+    implementation libs.bundles.persistence.dependencies
+    implementation libs.bundles.mapper.dependencies
+
+    developmentOnly libs.bundles.development.only
+
+    runtimeOnly libs.bundles.runtime.only
+
+    providedRuntime libs.bundles.provided.runtime
+
     testAnnotationProcessor libs.bundles.test.annotation.processor
     testCompileOnly libs.bundles.test.compile.only
 
     testImplementation libs.bundles.unit.testing
+
     testRuntimeOnly libs.bundles.test.runtime.only
 
 }

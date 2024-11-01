@@ -1,31 +1,51 @@
 [versions]
 assertj-core-version = "3.26.3"
+bean-mapper-api-version = "2.3"
 commons-text-version = "1.12.0"
+data-api-version = "5"
+ent-version = "5.1"
 equalsverifier-version = "3.17.1"
-file-worker-version = "18.0"
+file-worker-version = "18.1"
+generic-mapper-version = "4.1"
 gradle-migration-data-version = "3.0"
+gradle-plugin-dependency-management-version = "1.1.6"
 gradle-plugin-grgit-version = "5.3.0"
 gradle-plugin-license-version = "0.16.1"
 gradle-plugin-lombok-version = "8.10.2"
 gradle-plugin-spotless-version = "7.0.0.BETA4"
+gradle-plugin-spring-boot-version = "3.3.5"
 gradle-plugin-version-catalog-update-version = "0.8.5"
 gradle-plugin-versions-version = "0.51.0"
+jakarta-version = "3.2.0"
 junit-jupiter-params-version = "5.11.3"
 junit-jupiter-version = "5.11.3"
 lombok-version = "1.18.34"
 meanbean-version = "3.0.0-M9"
 mockito-core-version = "5.14.2"
+postgresql-version = "42.7.4"
 silly-collection-version = "28.1"
 silly-io-version = "3.2"
+spring-tool-extensions-version = "3.1"
 test-object-version = "9"
 throwable-version = "3"
+modelmapper-version = "3.1.0"
+hibernate-version = "6.5.3.Final"
 
 [libraries]
+hibernate-core = { module = "org.hibernate.orm:hibernate-core", version.ref = "hibernate-version" }
+modelmapper = { module = "org.modelmapper:modelmapper", version.ref = "modelmapper-version" }
 assertj-core = { module = "org.assertj:assertj-core", version.ref = "assertj-core-version" }
+bean-mapper-api = { module = "io.github.astrapi69:bean-mapper-api", version.ref = "bean-mapper-api-version" }
 commons-text = { module = "org.apache.commons:commons-text", version.ref = "commons-text-version" }
+data-api = { module = "io.github.astrapi69:data-api", version.ref = "data-api-version" }
+ent-core = { module = "io.github.astrapi69:ent-core", version.ref = "ent-version" }
 equalsverifier = { module = "nl.jqno.equalsverifier:equalsverifier", version.ref = "equalsverifier-version" }
 file-worker = { module = "io.github.astrapi69:file-worker", version.ref = "file-worker-version" }
+flyway-core = { module = "org.flywaydb:flyway-core" }
+flyway-database-postgresql = { module = "org.flywaydb:flyway-database-postgresql" }
+generic-mapper = { module = "io.github.astrapi69:generic-mapper", version.ref = "generic-mapper-version" }
 gradle-migration-data = { module = "io.github.astrapi69:gradle-migration-data", version.ref = "gradle-migration-data-version" }
+jakarta-persistence-api = { module = "jakarta.persistence:jakarta.persistence-api", version.ref = "jakarta-version" }
 junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit-jupiter-version" }
 junit-jupiter-params = { module = "org.junit.jupiter:junit-jupiter-params", version.ref = "junit-jupiter-params-version" }
 junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher" }
@@ -33,9 +53,22 @@ lombok = { module = "org.projectlombok:lombok", version.ref = "lombok-version" }
 meanbean = { module = "com.github.meanbeanlib:meanbean", version.ref = "meanbean-version" }
 mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockito-core-version" }
 mockito-junit-jupiter = { module = "org.mockito:mockito-junit-jupiter", version.ref = "mockito-core-version" }
+postgresql = { module = "org.postgresql:postgresql", version.ref = "postgresql-version" }
 silly-collection = { module = "io.github.astrapi69:silly-collection", version.ref = "silly-collection-version" }
 silly-io = { module = "io.github.astrapi69:silly-io", version.ref = "silly-io-version" }
+spring-boot-devtools = { module = "org.springframework.boot:spring-boot-devtools" }
+spring-boot-docker-compose = { module = "org.springframework.boot:spring-boot-docker-compose" }
+spring-boot-starter-actuator = { module = "org.springframework.boot:spring-boot-starter-actuator" }
+spring-boot-starter-data-jpa = { module = "org.springframework.boot:spring-boot-starter-data-jpa" }
+spring-boot-starter-data-rest = { module = "org.springframework.boot:spring-boot-starter-data-rest" }
+spring-boot-starter-test = { module = "org.springframework.boot:spring-boot-starter-test" }
+spring-boot-starter-tomcat = { module = "org.springframework.boot:spring-boot-starter-tomcat" }
+spring-boot-starter-web = { module = "org.springframework.boot:spring-boot-starter-web" }
+spring-boot-testcontainers = { module = "org.springframework.boot:spring-boot-testcontainers" }
+spring-tool-extensions = { module = "io.github.astrapi69:spring-tool-extensions", version.ref = "spring-tool-extensions-version" }
 test-object = { module = "io.github.astrapi69:test-object", version.ref = "test-object-version" }
+testcontainers-junit-jupiter = { module = "org.testcontainers:junit-jupiter" }
+testcontainers-postgresql = { module = "org.testcontainers:postgresql" }
 throwable = { module = "io.github.astrapi69:throwable", version.ref = "throwable-version" }
 
 [bundles]
@@ -46,6 +79,40 @@ annotation-processor = [
 # Dependencies required only at compile-time and not included in the final artifact
 compile-only = [
     "lombok",
+]
+# Dependencies required only at compile-time and not included in the final artifact
+development-only = [
+    "spring-boot-devtools",
+    "spring-boot-docker-compose",
+]
+flyway = [
+    "flyway-core",
+    "flyway-database-postgresql",
+]
+mapper-dependencies = [
+    "bean-mapper-api",
+    "generic-mapper",
+    "modelmapper",
+]
+persistence-dependencies = [
+    "data-api",
+    "ent-core",
+    "jakarta-persistence-api",
+]
+provided-runtime = [
+    "spring-boot-starter-tomcat",
+]
+runtime-only = [
+    "postgresql",
+]
+spring-boot-dependencies = [
+    "spring-boot-starter-actuator",
+    "spring-boot-starter-data-jpa",
+    "spring-boot-starter-data-rest",
+    "spring-boot-starter-web",
+]
+spring-boot-extension-dependencies = [
+    "spring-tool-extensions",
 ]
 # Annotation processor dependencies used specifically for test classes
 test-annotation-processor = [
@@ -73,14 +140,20 @@ unit-testing = [
     "mockito-junit-jupiter",
     "silly-collection",
     "silly-io",
+    "spring-boot-starter-test",
+    "spring-boot-testcontainers",
     "test-object",
+    "testcontainers-junit-jupiter",
+    "testcontainers-postgresql",
     "throwable",
 ]
 
 [plugins]
+dependency-management-plugin = { id = "io.spring.dependency-management", version.ref = "gradle-plugin-dependency-management-version" }
 gradle-versions-plugin = { id = "com.github.ben-manes.versions", version.ref = "gradle-plugin-versions-version" }
 grgit-gradle = { id = "org.ajoberstar.grgit", version.ref = "gradle-plugin-grgit-version" }
 license-gradle-plugin = { id = "com.github.hierynomus.license", version.ref = "gradle-plugin-license-version" }
 lombok-plugin = { id = "io.freefair.lombok", version.ref = "gradle-plugin-lombok-version" }
 spotless-plugin-gradle = { id = "com.diffplug.spotless", version.ref = "gradle-plugin-spotless-version" }
+spring-boot-gradle-plugin = { id = "org.springframework.boot", version.ref = "gradle-plugin-spring-boot-version" }
 version-catalog-update = { id = "nl.littlerobots.version-catalog-update", version.ref = "gradle-plugin-version-catalog-update-version" }

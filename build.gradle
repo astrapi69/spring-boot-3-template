@@ -12,10 +12,13 @@ plugins {
     id 'java-library'
     id 'maven-publish'
     id 'signing'
+    id 'war'
+    alias(libs.plugins.dependency.management.plugin)
     alias(libs.plugins.gradle.versions.plugin)
     alias(libs.plugins.grgit.gradle)
     alias(libs.plugins.license.gradle.plugin)
     alias(libs.plugins.lombok.plugin)
+    alias(libs.plugins.spring.boot.gradle.plugin)
     alias(libs.plugins.spotless.plugin.gradle)
     alias(libs.plugins.version.catalog.update)
 }
@@ -33,6 +36,13 @@ java {
         languageVersion = JavaLanguageVersion.of(projectSourceCompatibility)
     }
 }
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = "UTF-8"

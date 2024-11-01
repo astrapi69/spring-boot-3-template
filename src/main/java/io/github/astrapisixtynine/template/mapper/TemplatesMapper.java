@@ -1,7 +1,7 @@
 /**
  * The MIT License
  *
- * Copyright (C) 2022 Asterios Raptis
+ * Copyright (C) 2020 Asterios Raptis
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -22,8 +22,15 @@
  * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-package io.github.astrapisixtynine;
+package io.github.astrapisixtynine.template.mapper;
 
-public class InitialTemplate
+import org.springframework.stereotype.Component;
+
+import io.github.astrapi69.model.mapper.AbstractGenericMapper;
+import io.github.astrapisixtynine.template.entity.Templates;
+import io.github.astrapisixtynine.template.viewmodel.Template;
+
+@Component
+public class TemplatesMapper extends AbstractGenericMapper<Templates, Template>
 {
 }
