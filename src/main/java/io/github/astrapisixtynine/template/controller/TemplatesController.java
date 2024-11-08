@@ -24,6 +24,7 @@
  */
 package io.github.astrapisixtynine.template.controller;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -51,5 +52,11 @@ public class TemplatesController
 	{
 		Templates entity = templatesService.save(Templates.builder().name("foo").build());
 		return mapper.toDto(entity);
+	}
+
+	@GetMapping()
+	public String hello()
+	{
+		return "Hello, World!";
 	}
 }
