@@ -1,4 +1,3 @@
-
 [![Build Status](https://github.com/astrapi69/spring-boot-3-template/actions/workflows/gradle.yml/badge.svg)](https://github.com/astrapi69/spring-boot-3-template/actions/workflows/gradle.yml)
 [![Coverage Status](https://codecov.io/gh/astrapi69/spring-boot-3-template/branch/develop/graph/badge.svg)](https://codecov.io/gh/astrapi69/spring-boot-3-template)
 [![Open Issues](https://img.shields.io/github/issues/astrapi69/spring-boot-3-template.svg?style=flat)](https://github.com/astrapi69/spring-boot-3-template/issues)

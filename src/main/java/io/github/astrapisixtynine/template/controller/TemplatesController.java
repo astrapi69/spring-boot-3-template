@@ -28,8 +28,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.github.astrapisixtynine.template.enumeration.AppRestPath;
 import io.github.astrapisixtynine.template.entity.Templates;
+import io.github.astrapisixtynine.template.enumeration.AppRestPath;
 import io.github.astrapisixtynine.template.mapper.TemplatesMapper;
 import io.github.astrapisixtynine.template.service.TemplatesService;
 import io.github.astrapisixtynine.template.viewmodel.Template;
